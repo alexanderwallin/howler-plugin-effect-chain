@@ -2,6 +2,12 @@
 
 Adds an audio effect chain to [Howler](https://github.com/goldfire/howler.js). Suitable as bridge between Howler and web audio libraries such as [Tuna](https://github.com/Theodeus/tuna).
 
+It works by injecting a chain of nodes between `Sound`s and the `Howler.masterGain`:
+
+```
+Sound._node -> Howler._effectChain -> [Added effects] -> Howler._effectChainOut -> Howler.masterGain
+```
+
 ## Installation
 
 ### Via npm
