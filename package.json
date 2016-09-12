@@ -1,0 +1,39 @@
+{
+  "name": "howler-plugin-effect-chain",
+  "version": "0.1.0",
+  "description": "Adds an audio effect chain to Howler",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "clean": "rm -r dist && mkdir dist",
+    "uglify": "uglifyjs src/index.js -o dist/index.min.js -c -m",
+    "prebuild": "npm run clean",
+    "build": "cp src/index.js dist/index.js && npm run uglify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexanderwallin/howler-plugin-effect-chain.git"
+  },
+  "keywords": [
+    "howler",
+    "plugin",
+    "audio",
+    "web audio api",
+    "effects"
+  ],
+  "author": "Alexander Wallin <office@alexanderwallin.com> (http://alexanderwallin.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexanderwallin/howler-plugin-effect-chain/issues"
+  },
+  "homepage": "https://github.com/alexanderwallin/howler-plugin-effect-chain#readme",
+  "devDependencies": {
+    "cash-cp": "^0.2.0",
+    "cash-mkdir": "^0.2.0",
+    "cash-rm": "^0.2.0",
+    "uglify-js": "^2.7.3"
+  }
+}
