@@ -11,7 +11,12 @@
     "clean": "rm -r dist && mkdir dist",
     "uglify": "uglifyjs src/index.js -o dist/index.min.js -c -m",
     "prebuild": "npm run clean",
-    "build": "cp src/index.js dist/index.js && npm run uglify"
+    "build": "cp src/index.js dist/index.js && npm run uglify",
+    "watch": "npm-watch",
+    "dev": "npm run build && npm run watch"
+  },
+  "watch": {
+    "build": "src/index.js"
   },
   "repository": {
     "type": "git",
