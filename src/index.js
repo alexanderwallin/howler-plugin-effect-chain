@@ -39,13 +39,15 @@ HowlerGlobal.prototype._setup = (function(_super) {
  */
 HowlerGlobal.prototype.unload = (function(_super) {
   return function() {
+    var self = this || Howler;
+
     if (self.effectChain.debug) {
       console.warn('[Howler Effects Chain] Calling Howler.unload() creates a '
         + 'new audio context, which will invalidate the effects you have created '
         + 'with the old context.');
     }
 
-    return _super.call(this || Howler);
+    return _super.call(self);
   }
 })(HowlerGlobal.prototype.unload);
 
