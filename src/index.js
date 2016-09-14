@@ -5,10 +5,17 @@
 
 /**
  * Sets up the effects chain intermediary.
+ *
+ * _setup() is called form within the private method setupAudioContext(),
+ * which itself is only called once, plus once after every HowlerGlobal.unload().
  */
 HowlerGlobal.prototype._setup = (function(_super) {
   return function(o) {
     var self = this || Howler;
+
+    self.effectChain = {
+      debug: false
+    };
 
     // List of effects
     self._effects = [];
@@ -26,6 +33,21 @@ HowlerGlobal.prototype._setup = (function(_super) {
     return _super.call(self, o);
   }
 })(HowlerGlobal.prototype._setup);
+
+/**
+ * Warns about unload() invalidating all added effects.
+ */
+HowlerGlobal.prototype.unload = (function(_super) {
+  return function() {
+    if (self.effectChain.debug) {
+      console.warn('[Howler Effects Chain] Calling Howler.unload() creates a '
+        + 'new audio context, which will invalidate the effects you have created '
+        + 'with the old context.');
+    }
+
+    return _super.call(this || Howler);
+  }
+})(HowlerGlobal.prototype.unload);
 
 /**
  * Rewires a created sound from being connected directly to
