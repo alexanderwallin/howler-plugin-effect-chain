@@ -1,6 +1,6 @@
 {
   "name": "howler-plugin-effect-chain",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Adds an audio effect chain to Howler",
   "main": "dist/index.js",
   "files": [
